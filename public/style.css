@@ -11,7 +11,6 @@ body {
     display: grid;
     grid-gap: 10px;
     background: #F2F7F5;
-
     grid-template-columns: repeat(2, minmax(30px, 150px));
     grid-template-rows: repeat(6, 50px);
     justify-content: center;
@@ -49,6 +48,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 
@@ -62,6 +62,7 @@ body {
     display: grid;
     justify-items: center;
     align-items: center;
+    text-align: center;
 }
 
 .gif {

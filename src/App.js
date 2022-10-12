@@ -2,14 +2,15 @@ import React from "react"
 import {nanoid} from "nanoid"
 import BodyPart from "./components/BodyPart"
 import Exercise from "./components/Exercise"
-import exercisesListInRussian from "./data/exercisesInRussian"
+// import exercisesListInRussian from "./data/exercisesInRussian"
 
 export default function App() {
     const [bodyParts, setBodyParts] = React.useState([])
     const [allExercises, setAllExercises] = React.useState([])
     const [areAllGiftsShown, setAreAllGiftsShown] = React.useState(false)
-    const [isRussian, setIsRussian] = React.useState(false)
-    const [allExercisesInRussian, setAllExercisesInRussian] = React.useState([])
+    // const [isRussian, setIsRussian] = React.useState(false)
+    // const [engExercises, setEngExercises] = React.useState([])
+    // const [allExercisesInRussian, setAllExercisesInRussian] = React.useState([])
 
 
 
@@ -31,12 +32,12 @@ export default function App() {
         });
 
         //geting data of all exercises in russian
-        fetch('https://sharai-gym-api.herokuapp.com/exercisesInRussian')
-        .then(response => response.json())
-        .then(response => {
-            setAllExercises(response)
-            setAllExercises(oldResponse => oldResponse.map(exercise => ({...exercise, isVisible: false, isSelected: false})))
-        });
+        // fetch('https://sharai-gym-api.herokuapp.com/exercisesInRussian')
+        // .then(response => response.json())
+        // .then(response => {
+        //     setAllExercisesInRussian(response)
+        //     setAllExercisesInRussian(oldResponse => oldResponse.map(exercise => ({...exercise, isVisible: false, isSelected: false})))
+        // });
     }, [])
 
     function handleBodyPartClick(id) {
@@ -90,25 +91,24 @@ export default function App() {
         }))
     }, [areAllGiftsShown])
 
-    function handleChangelanguage() {
-        setIsRussian(oldValue => !oldValue)
-        setBodyParts(oldList => oldList.map(part => {return{...part, isHeld: false}}))
+    // function handleChangelanguage() {
+    //     setIsRussian(oldValue => !oldValue)
+    //     setBodyParts(oldList => oldList.map(part => {return{...part, isHeld: false}}))
+    // }
 
-    }
-
-    React.useEffect(() => {
-        setAllExercises(oldExercises => 
-            {
-                if(isRussian) {
-                    return exercisesListInRussian.map(exercise => {
-                        return {...exercise, isVisible: false, isSelected: false}})
-                }
-                else {
-                    return allExercisesInRussian.map(engExercise => {return{...engExercise, isVisible: false, isSelected: false}})
-                }
-            }
-        )
-    }, [isRussian])
+    // React.useEffect(() => {
+    //     setAllExercises(oldExercises => 
+    //         {
+    //             if(isRussian) {
+    //                 return allExercisesInRussian.map(exercise => {
+    //                     return {...exercise, isVisible: false, isSelected: false}})
+    //             }
+    //             else {
+    //                 return engExercises.map(engExercise => {return{...engExercise, isVisible: false, isSelected: false}})
+    //             }
+    //         }
+    //     )
+    // }, [isRussian])
 
     return (
         <div>
@@ -120,9 +120,9 @@ export default function App() {
                 <div className="showExercisesButton" onClick={handlShowingAllGifts} style={{backgroundColor: areAllGiftsShown ? "#59E391" : "#F2F7F5"}}>
                     <p>Show all gifts</p>
                 </div> 
-                <div className="changeLanguage" onClick={handleChangelanguage} style={{backgroundColor: isRussian ? "#59E391" : "#F2F7F5"}}>
+                {/* <div className="changeLanguage" onClick={handleChangelanguage} style={{backgroundColor: isRussian ? "#59E391" : "#F2F7F5"}}>
                     <p>Change changeLanguage</p>
-                </div> 
+                </div>  */}
             </div>
             
             <div className="exercise-container">
