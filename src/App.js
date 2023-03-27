@@ -1,4 +1,5 @@
 import React from "react"
+import data from './data/data.json' // Import the local data file
 import {nanoid} from "nanoid"
 import BodyPart from "./components/BodyPart"
 import Exercise from "./components/Exercise"
@@ -16,20 +17,25 @@ export default function App() {
 
     React.useEffect(() => {
         //geting data of parts of body
-        fetch('https://sharai-gym-api.herokuapp.com/bodyParts')
-        .then(response => response.json())
-        .then(response => {
-            setBodyParts(response)
-            setBodyParts(oldResponse => oldResponse.map(part =>  ({name: part, isHeld: false, id: nanoid()})))
-        });
+        // fetch('https://sharai-gym-api.herokuapp.com/bodyParts')
+        // .then(response => response.json())
+        // .then(response => {
+        //     setBodyParts(response)
+        //     setBodyParts(oldResponse => oldResponse.map(part =>  ({name: part, isHeld: false, id: nanoid()})))
+        // });
+        setBodyParts(data.bodyParts); // Use the data from the local file instead of the API
+        setBodyParts(oldResponse => oldResponse.map(part => ({ name: part, isHeld: false, id: nanoid() })));
 
         //geting data of all exercises
-        fetch('https://sharai-gym-api.herokuapp.com/exercises')
-        .then(response => response.json())
-        .then(response => {
-            setAllExercises(response)
-            setAllExercises(oldResponse => oldResponse.map(exercise => ({...exercise, isVisible: false, isSelected: false})))
-        });
+        // fetch('https://sharai-gym-api.herokuapp.com/exercises')
+        // .then(response => response.json())
+        // .then(response => {
+        //     setAllExercises(response)
+        //     setAllExercises(oldResponse => oldResponse.map(exercise => ({...exercise, isVisible: false, isSelected: false})))
+        // });
+        setAllExercises(data.exercises); // Use the data from the local file instead of the API
+        setAllExercises(oldResponse => oldResponse.map(exercise => ({ ...exercise, isVisible: false, isSelected: false })));
+
 
         //geting data of all exercises in russian
         // fetch('https://sharai-gym-api.herokuapp.com/exercisesInRussian')
